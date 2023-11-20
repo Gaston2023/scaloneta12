@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Consulta por app React</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: black;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: black;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: greenyellow;
+    }
+
+    p {
+      color: white;
+    }
+
+    li {
+      color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <center>
+      <h1>Consulta desde Contacto</h1>
+      <p>Recibiste una nueva consulta desde la App de React</p>
+      <ul>
+        <li>Remitente Nombre y Apellido: {{nombre}}</li>
+        <li>Remitente Correo electrónico: {{correo}}</li>
+        <li>Mensaje: {{ mensaje }}</li>
+      </ul>
+      <img
+        src="https://media.urgente24.com/p/8c1b0429678ae224e60e6e5a092218f7/adjuntos/319/imagenes/002/775/0002775779/1200x0/smart/argentinacampeon3raestrellaymisioncumplidaparamessifotoportadajpg.jpg"
+        width="550px" style="display: block;" alt="Argentina Campeon">
+    </center>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+
+link github: 
+
+
+PROCEDIMIENTOS REALIZADOS
+
+ESTADISTICA:
+////////// procedimiento 1: todos los futbolistas
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procEstadistica1`()
+    NO SQL
+BEGIN
+
+/*futbolistas activos*/
+DECLARE futbolistas int;
+
+select count(*) into futbolistas
+from futbolista 
+where activo = 1;
+
+/*convocatorias realizadas*/
+DECLARE convocatorias int;
+
+select count(*) into convocatorias
+from convocatoria;
+
+SELECT futbolistas, convocatorias;
+END$$
+DELIMITER ;
+GRANT EXECUTE ON PROCEDURE procEstadistica1 TO 'scaloneta12'@'localhost';
+
+
+//////////// procedimiento 2: datos de los convocados
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procEstadistica2`()
+    NO SQL
+BEGIN
+
+SELECT f.idFutbolista, f.nombre, f.apellido, f.posicion, fc.dorsal, fc.esCapitan, fc.esTitular
+FROM futbolista f
+INNER JOIN futbolistaconvocatoria fc
+ON f.idFutbolista = fc.futbolista
+WHERE fc.convocatoria = convocatoria;
+
+END$$
+DELIMITER ;
+
+GRANT EXECUTE ON PROCEDURE procEstadistica2 TO 'scaloneta12'@'localhost';
+
+/////////// Procedimiento 3: cantidad de convocatorias
+
+DELIMITER $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `procEstadistica3`()
+    NO SQL
+BEGIN
+
+    -- Cantidad de convocatorias
+    SELECT COUNT(*) INTO convocatorias
+    FROM futbolistaconvocatoria;
+
+    -- Mostramos los resultados
+    SELECT convocatorias;
+END$$
+
+
+DELIMITER ;
+
+GRANT EXECUTE ON PROCEDURE procEstadistica3 TO 'scaloneta12'@'localhost';
